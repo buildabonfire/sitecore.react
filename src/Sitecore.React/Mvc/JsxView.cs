@@ -97,7 +97,7 @@ namespace Sitecore.React.Mvc
 			var props = this.GetProps(viewContext.ViewData.Model, placeholderKeys);
 
 		    IReactComponent reactComponent = this.Environment.CreateComponent($"Components.{componentName}", props);
-		    if (ReactSettingsProvider.Current.EnableClientside)
+		    if (ReactSettingsProvider.Current.EnableClientside && !Context.PageMode.IsExperienceEditorEditing)
 		    {
 		        writer.WriteLine(reactComponent.RenderHtml());
 
